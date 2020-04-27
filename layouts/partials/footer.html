@@ -1,7 +1,9 @@
 {{ if .Site.Params.enableCopyright | default true }}
 <footer class="mt-2 pt-2 pb-2">
   <div class="wrap">
-    <p>&copy; {{ now.Year }} {{ .Site.Params.author }}</p>
+    <p>&copy; {{ now.Year }} {{ .Site.Params.author }} - view the source at
+      {{ $repo := .Site.Params.source }}<a class="nav-link" href="{{ $repo.url }}" target="_blank">{{ $repo.name }}</a>
+    </p>
   </div>
 </footer>
 {{ end }}
