@@ -1,5 +1,6 @@
 <nav class="wrap nav">
 	<a href="{{ .Site.BaseURL }}">
+	{{ with .Site.Params.logo }}
 		<picture>
 			{{- $logos := .Site.Params.logo }}
 			{{- $normalPath := absURL (printf "images/%s" $logos.lightMode) }}
@@ -8,6 +9,9 @@
 			<source srcset = '{{ $darkPath }}' media="(prefers-color-scheme: dark)">
 			<img srcset = '{{ $normalPath }}' alt = '{{ .Site.Title }} Logo'>
 		</picture>
+        {{ else }}
+		<p><b>{{ .Site.Title }}</b></p>
+	{{ end }}
 	</a>
 	{{ if .Site.Params.enableSearch | default true }}
 	{{- partial "search.html" . }}
